@@ -46,6 +46,7 @@ app.patch('/patchCourse/:id',(req,res)=>{
     Course.findOneAndReplace({_id:req.params.id},req.body).then((ab)=>{
         console.log(ab);
     })
+    console.log(res.data);
 })
 
 app.listen(4500,()=>{console.log('Server is running !!')})
