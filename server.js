@@ -8,8 +8,9 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 var Product = require('./Product');
-var Student = require('./Student');
-var Course = require('./Course'); 
+//var Student = require('./Student');
+var Course = require('./Course');
+var Enquiry = require('./Enquiry'); 
 
 // var newStudent = new Student({name:'gautam',college:'anits',poy:'2020'});
 // newStudent.save();
@@ -18,6 +19,13 @@ var Course = require('./Course');
 
 app.get('/courses',((req,res)=>{
     Course.find({}).then((data)=>{
+       let courses = data;
+       res.json(courses);
+    })
+}))
+
+app.get('/courses/:id',((req,res)=>{
+    Course.findById(req.params.id).then((data)=>{
        let courses = data;
        res.json(courses);
     })
@@ -47,6 +55,15 @@ app.patch('/patchCourse/:id',(req,res)=>{
         console.log(ab);
     })
     console.log(res.data);
-})
+})  //Patch replaces whole body with a new body...(even --v in database gets replaced)
+
+app.post('/register',((req,res)=>{
+    let newEnquiry = new Enquiry(req.body)
+    // newEnquiry.save();
+    // res.json(newEnquiry);
+}))
+
+
+
 
 app.listen(4500,()=>{console.log('Server is running !!')})
