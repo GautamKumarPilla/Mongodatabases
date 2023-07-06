@@ -11,6 +11,7 @@ var Product = require('./Product');
 //var Student = require('./Student');
 var Course = require('./Course');
 var Enquiry = require('./Enquiry'); 
+var Admin = require('./Admin');
 
 // var newStudent = new Student({name:'gautam',college:'anits',poy:'2020'});
 // newStudent.save();
@@ -62,7 +63,13 @@ app.post('/register',((req,res)=>{
     // newEnquiry.save();
     // res.json(newEnquiry);
 }))
-
+ 
+app.get('/admin',((req,res)=>{
+    Admin.find({}).then((data)=>{
+       let adminData = data;
+       res.json(adminData);
+    })
+}))
 
 
 

@@ -10,7 +10,6 @@ var enquirySchema = new Schema({
     academics:String,
     contact:Number,
     email:String
-    
 })
 
 var EnquiryModel = mongoose.model("Enquiry",enquirySchema);
