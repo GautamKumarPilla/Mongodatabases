@@ -60,9 +60,17 @@ app.patch('/patchCourse/:id',(req,res)=>{
 
 app.post('/register',((req,res)=>{
     let newEnquiry = new Enquiry(req.body)
-    // newEnquiry.save();
-    // res.json(newEnquiry);
+    //newEnquiry.save();
+    res.json(newEnquiry);
+    //console.log(newEnquiry);
 }))
+
+app.get('/register',(req,res)=>{
+    Enquiry.find({}).then((data)=>{
+        let enquiryData = data;
+        res.json(enquiryData);
+     })
+})
  
 app.get('/admin',((req,res)=>{
     Admin.find({}).then((data)=>{
