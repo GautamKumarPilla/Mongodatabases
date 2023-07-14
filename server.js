@@ -1,11 +1,28 @@
 var express = require('express');
 var cors = require('cors');
 var app = express();
+//var cookieParser = require('cookie-parser');
+//var session = require('express-session');
 
 //Middlewares
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.static("public"));
+
+//app.use(session({secret: "Shh, its a secret!"}));
+
+// app.get('/', function(req, res){
+//    if(req.session.page_views){
+//       req.session.page_views++;
+//       res.send("You visited this page " + req.session.page_views + " times");
+//    } else {
+//       req.session.page_views = 1;
+//       res.send("Welcome to this page for the first time!");
+//    }
+// });
+
+// app.listen(4700,()=>{console.log('Server is running !!')})
+
 
 var Product = require('./Product');
 var Student = require('./Student');
