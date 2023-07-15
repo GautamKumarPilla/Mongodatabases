@@ -1,13 +1,19 @@
 var express = require('express');
 var cors = require('cors');
 var app = express();
-//var cookieParser = require('cookie-parser');
+var cookieParser = require('cookie-parser');
 //var session = require('express-session');
+var jwt = require('jsonwebtoken');
 
 //Middlewares
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.static("public"));
+
+app.use((req,res,next)=>{
+    next();
+})
 
 //app.use(session({secret: "Shh, its a secret!"}));
 
@@ -27,6 +33,16 @@ app.use(express.static("public"));
 var Product = require('./Product');
 var Student = require('./Student');
 var Course = require('./Course'); 
+
+app.get('/g',(req,res)=>{
+    var token = jwt.sign({username: 'PraveenGubbala', password: 'Pg@1234'},'Newsecret');
+    res.cookie('name',token);
+    res.cookie('naam', 'gautam');
+    //res.clearCookie('name');
+    res.send('Cookie created');
+    var x = app.use(cors(jwt.decode(eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlByYXZlZW5HdWJiYWxhIiwicGFzc3dvcmQiOiJQZ0AxMjM0IiwiaWF0IjoxNjg5NDIyMTgwfQ.yZD-jKH3YL4lHlqQY197OctB2-zMJD99p-GgKYNHlEY)))
+    console.log('x::',x);
+})
 
 // var newStudent = new Student({name:'gautam',college:'anits',poy:'2020'});
 // newStudent.save();
