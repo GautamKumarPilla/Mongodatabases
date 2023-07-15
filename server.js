@@ -35,13 +35,13 @@ var Student = require('./Student');
 var Course = require('./Course'); 
 
 app.get('/g',(req,res)=>{
-    var token = jwt.sign({username: 'lawdalohit', password: 'll@1234'},'Newsecret');
-    res.cookie('testing',token);
+    var token = jwt.sign({username: 'GautamKumar', password: 'Pg@1234'},'Newsecret');
+    res.cookie('name',token);
     res.cookie('naam', 'gautam');
     //res.clearCookie('name');
     res.send('Cookie created');
-    var x = jwt.decode('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlByYXZlZW5HdWJiYWxhIiwicGFzc3dvcmQiOiJQZ0AxMjM0IiwiaWF0IjoxNjg5NDI1OTg3fQ.TDYWDV_GBuz4M2dR4ymVJ8l_AY0W3WHeYzm2Z6v5Rks','Newsecret');
-    console.log('x::',x);
+    var z = jwt.decode('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkdhdXRhbUt1bWFyIiwicGFzc3dvcmQiOiJQZ0AxMjM0IiwiaWF0IjoxNjg5NDI3ODI5fQ.ANcuvwy6hNM3Zx39JY8xJkvhJC-sKy3GefU7YSo7NzU','Newsecret');
+    console.log('Token-Decrypted::', z);
 })
 
 
