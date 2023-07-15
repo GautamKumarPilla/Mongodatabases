@@ -35,14 +35,15 @@ var Student = require('./Student');
 var Course = require('./Course'); 
 
 app.get('/g',(req,res)=>{
-    var token = jwt.sign({username: 'PraveenGubbala', password: 'Pg@1234'},'Newsecret');
-    res.cookie('name',token);
+    var token = jwt.sign({username: 'lawdalohit', password: 'll@1234'},'Newsecret');
+    res.cookie('testing',token);
     res.cookie('naam', 'gautam');
     //res.clearCookie('name');
     res.send('Cookie created');
-    var x = app.use(cors(jwt.decode(eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlByYXZlZW5HdWJiYWxhIiwicGFzc3dvcmQiOiJQZ0AxMjM0IiwiaWF0IjoxNjg5NDIyMTgwfQ.yZD-jKH3YL4lHlqQY197OctB2-zMJD99p-GgKYNHlEY)))
+    var x = jwt.decode('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlByYXZlZW5HdWJiYWxhIiwicGFzc3dvcmQiOiJQZ0AxMjM0IiwiaWF0IjoxNjg5NDI1OTg3fQ.TDYWDV_GBuz4M2dR4ymVJ8l_AY0W3WHeYzm2Z6v5Rks','Newsecret');
     console.log('x::',x);
 })
+
 
 // var newStudent = new Student({name:'gautam',college:'anits',poy:'2020'});
 // newStudent.save();
