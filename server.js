@@ -82,4 +82,50 @@ app.patch('/patchCourse/:id',(req,res)=>{
     })
 })
 
+app.post('/register',((req,res)=>{
+    let newEnquiry = new Enquiry(req.body)
+    //newEnquiry.save();
+    res.json(newEnquiry);
+    //console.log(newEnquiry);
+}))
+
+app.get('/register',(req,res)=>{
+    Enquiry.find({}).then((data)=>{
+        let enquiryData = data;
+        res.json(enquiryData);
+     })
+})
+
+app.get('/register/:id',(req,res)=>{
+    Enquiry.findById({_id:req.params.id}).then((data)=>{
+        let enquiryData = data;
+        res.json(enquiryData);
+     })
+})
+ 
+app.get('/admin',((req,res)=>{
+    Admin.find({}).then((data)=>{
+       let adminData = data;
+       res.json(adminData);
+    })
+}))
+
+app.post('/admin',(req,res)=>{
+    console.log(req.body)
+    let x=req.body
+    Admin.find({}).then((data)=>{
+        
+        let admin = data.filter((a)=>{
+            return (a.password===x.password && a.username === x.username)
+        })
+        console.log(admin)
+        if(admin.length!=0){
+            res.json(admin);
+        }
+        else{
+            res.send("Login Failed");
+        }
+    })
+})
+
 app.listen(4500,()=>{console.log('Server is running !!')});
