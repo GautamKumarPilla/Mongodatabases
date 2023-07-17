@@ -15,9 +15,9 @@ app.use((req,res,next)=>{
     next();
 })
 
-//app.use(session({secret: "Shh, its a secret!"}));
+// app.use(session({secret: "Shh, its a secret!"}));
 
-// app.get('/', function(req, res){
+// app.get('/c', function(req, res){
 //    if(req.session.page_views){
 //       req.session.page_views++;
 //       res.send("You visited this page " + req.session.page_views + " times");
@@ -27,7 +27,7 @@ app.use((req,res,next)=>{
 //    }
 // });
 
-// app.listen(4700,()=>{console.log('Server is running !!')})
+// app.listen(4700,()=>{console.log('Server is running !!')});
 
 
 var Product = require('./Product');
@@ -37,11 +37,11 @@ var Course = require('./Course');
 app.get('/g',(req,res)=>{
     var token = jwt.sign({username: 'GautamKumar', password: 'Pg@1234'},'Newsecret');
     res.cookie('name',token);
-    res.cookie('naam', 'gautam');
+    res.clearCookie()
     //res.clearCookie('name');
     res.send('Cookie created');
     var z = jwt.decode('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkdhdXRhbUt1bWFyIiwicGFzc3dvcmQiOiJQZ0AxMjM0IiwiaWF0IjoxNjg5NDI3ODI5fQ.ANcuvwy6hNM3Zx39JY8xJkvhJC-sKy3GefU7YSo7NzU','Newsecret');
-    console.log('Token-Decrypted::', z);
+    console.log('Token-Decrypted:', z);
 })
 
 
@@ -82,4 +82,4 @@ app.patch('/patchCourse/:id',(req,res)=>{
     })
 })
 
-app.listen(4500,()=>{console.log('Server is running !!')})
+app.listen(4500,()=>{console.log('Server is running !!')});
