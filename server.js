@@ -20,7 +20,7 @@ app.use((req,res,next)=>{
 // app.get('/c', function(req, res){
 //    if(req.session.page_views){
 //       req.session.page_views++;
-//       res.send("You visited this page " + req.session.page_views + " times");
+//       res.send("Visited this page " + req.session.page_views + " times");
 //    } else {
 //       req.session.page_views = 1;
 //       res.send("Welcome to this page for the first time!");
@@ -37,7 +37,7 @@ var Course = require('./Course');
 app.get('/g',(req,res)=>{
     var token = jwt.sign({username: 'GautamKumar', password: 'Pg@1234'},'Newsecret');
     res.cookie('name',token);
-    res.clearCookie()
+    res.clearCookie();
     //res.clearCookie('name');
     res.send('Cookie created');
     var z = jwt.decode('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkdhdXRhbUt1bWFyIiwicGFzc3dvcmQiOiJQZ0AxMjM0IiwiaWF0IjoxNjg5NDI3ODI5fQ.ANcuvwy6hNM3Zx39JY8xJkvhJC-sKy3GefU7YSo7NzU','Newsecret');
