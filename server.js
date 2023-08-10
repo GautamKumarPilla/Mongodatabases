@@ -11,9 +11,16 @@ app.use(express.urlencoded({extended:true}));
 app.get('/device',(req,res)=>{
    Device.find({}).then((data)=>{
      let deviceinfo = data;
-     res.json(deviceinfo); 
+     res.json(deviceinfo);
    })
 })
+
+app.get('/device/:id',(req,res)=>{
+    Device.find({}).then((data)=>{
+      let deviceinfo = data;
+      res.json(deviceinfo); 
+    })
+ })
 
 app.post('/add',(req,res)=>{
     let newDevice = new Device(req.body);
