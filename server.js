@@ -18,7 +18,7 @@ app.get('/device',(req,res)=>{
 app.get('/device/:id',(req,res)=>{
     Device.findById({_id:req.params.id}).then((data)=>{
       let deviceinfo = data;
-      res.json(deviceinfo); 
+      res.json(deviceinfo);
     })
  })
 
